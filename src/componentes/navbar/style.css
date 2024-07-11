@@ -1,0 +1,9 @@
+nav.navbar  {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que el navbar esté por encima del resto del contenido */
+  box-shadow: 0 5px 10px #00000031; /* Sombra para resaltar el navbar */
+  transition: top 0.3s; /* Transición suave al cambiar la propiedad top */
+  margin-bottom: 1rem;
+}

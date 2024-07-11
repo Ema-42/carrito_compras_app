@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../componentes/card/Card";
+import { ProductosContext } from "../context/ProductosContext";
+import { CarritoContext } from "../context/CarritoContext";
 
 const ComprasPages = () => {
-  const [productos, setProductos] = useState([]);
-  const fetchProductos = async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    setProductos(data);
-    console.log(data);
+  const { productos } = useContext(ProductosContext);
+  const {
+    agregarCompra,
+    eliminarCompra,
+  } = useContext(CarritoContext);
+  const handleAgregar = (compra) => {
+    agregarCompra(compra);
   };
-  useEffect(() => {
-    fetchProductos();
-  }, []);
+  const handleQuitar = (id) => {
+    eliminarCompra(id);
+  };
 
   return (
     <>
@@ -20,11 +23,14 @@ const ComprasPages = () => {
       {productos.map((producto) => (
         <Card
           imagen={producto.image}
-          categoria = {producto.category}
+          categoria={producto.category}
           titulo={producto.title}
           descripcion={producto.description}
           precio={producto.price}
+          id= {producto.id}
           key={producto.id}
+          handleAgregar={() => handleAgregar(producto)}
+          handleQuitar={() => handleQuitar(producto.id)}
         ></Card>
       ))}
     </>

@@ -26,7 +26,8 @@ nav.navbar {
   margin-left: auto;
  }
  .tema-dark{
-  background-color: #2c2d35 ;
+  background-color: #1c1c1c;
+  color: white;
  }
  .tema-dark-titulo{
   color: white;

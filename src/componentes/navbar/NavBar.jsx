@@ -4,12 +4,9 @@ import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CarritoContext } from "../../context/CarritoContext";
 import "./style.css";
+import { TemaContext } from "../../context/TemaContext";
 const NavBar = () => {
-  const [tema, setTema] = useState("light");
-  const cambiarTema = (eleccion) => {
-    setTema(eleccion);
-    console.log(tema);
-  };
+  const { tema, cambiarTema } = useContext(TemaContext);
   const { listaCompras } = useContext(CarritoContext);
   return (
     <>
